@@ -1,12 +1,13 @@
 :root {
-    /* Paleta de colores Vintage */
-    --bg-color: #fdf2c5;        /* Fondo Crema */
-    --envelope-color: #a5b090;  /* Verde Salvia (Bolsillo) */
-    --flap-color: #7a6f5d;      /* Taupe Oscuro (Solapa/Sombra) */
-    --pocket-color: #a5b090;    /* Verde Salvia */
-    --letter-color: #efe8b2;    /* Beige (Papel) */
-    --text-color: #7a6f5d;      /* Texto oscuro para contraste */
-    --accent-color: #cfc88f;    /* Dorado/Ocre (Detalles) */
+    /* Paleta Beige, Café, Gris y Negro */
+    --bg-color: #f4f1ea;        /* Beige Hueso (Fondo) */
+    --envelope-color: #6d4c41;  /* Café Tabaco (Bolsillo) */
+    --flap-color: #4e342e;      /* Café Espresso (Solapa/Sombra) */
+    --letter-color: #ffffff;    /* Blanco puro para la carta */
+    --text-color: #212121;      /* Negro suave (Texto) */
+    --heart-color: #9e9e9e;     /* Gris (Corazones de fondo) */
+    --btn-yes-bg: #212121;      /* Negro (Botón Sí) */
+    --btn-no-bg: #8d6e63;       /* Café claro (Botón No) */
 }
 
 body {
@@ -16,7 +17,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    font-family: 'Georgia', serif; /* Cambié a serif para toque más elegante */
+    font-family: 'Georgia', serif; 
     overflow: hidden;
     color: var(--text-color);
 }
@@ -37,16 +38,16 @@ body {
     position: absolute;
     bottom: -50px;
     font-size: 24px;
-    color: var(--accent-color); /* Usamos el dorado/ocre */
-    opacity: 0.6;
+    color: var(--heart-color); /* GRIS */
+    opacity: 0.4; /* Más sutiles */
     animation-name: floatUp;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
 }
 
 @keyframes floatUp {
-    0% { transform: translateY(0) rotate(0deg); opacity: 0.6; }
-    50% { opacity: 0.8; }
+    0% { transform: translateY(0) rotate(0deg); opacity: 0.4; }
+    50% { opacity: 0.6; }
     100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
 }
 
@@ -60,8 +61,8 @@ body {
     width: 300px;
     height: 200px;
     position: relative;
-    background-color: var(--pocket-color); 
-    box-shadow: 0 10px 30px rgba(122, 111, 93, 0.4); /* Sombra color taupe */
+    background-color: var(--envelope-color); 
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2); /* Sombra negra suave */
 }
 
 .flap {
@@ -90,7 +91,7 @@ body {
     z-index: 4;
 }
 
-/* Bordes laterales visuales */
+/* Bordes laterales visuales para dar profundidad */
 .pocket::before {
     content: '';
     position: absolute;
@@ -112,7 +113,7 @@ body {
     background: var(--letter-color);
     top: 5%;
     left: 20px;
-    border-radius: 2px; /* Bordes menos redondeados para parecer papel real */
+    border-radius: 2px;
     z-index: 3;
     transition: transform 0.8s ease-in-out 0.8s, z-index 0.1s 1s;
     display: flex;
@@ -123,7 +124,8 @@ body {
     box-sizing: border-box;
     text-align: center;
     opacity: 0;
-    border: 1px solid rgba(122, 111, 93, 0.2); /* Borde sutil */
+    border: 1px solid rgba(0,0,0,0.1); /* Borde muy fino gris */
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.05); /* Efecto papel viejo */
 }
 
 .text-container h1 {
@@ -131,13 +133,15 @@ body {
     color: var(--text-color);
     margin-bottom: 10px;
     font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 .text-container p {
     font-size: 1rem;
-    color: var(--text-color);
+    color: #444; /* Un gris oscuro para lectura cómoda */
     margin-bottom: 20px;
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
 /* Estados de animación */
@@ -151,7 +155,7 @@ body {
     z-index: 6;
     opacity: 1;
     height: 360px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
 }
 
 /* --- Botones --- */
@@ -162,30 +166,37 @@ body {
 }
 
 .btn {
-    padding: 10px 25px;
+    padding: 10px 30px;
     border: none;
-    border-radius: 4px;
+    border-radius: 2px; /* Más cuadrados, más elegantes */
     font-family: 'Georgia', serif;
     font-weight: bold;
     cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: all 0.3s ease;
     text-transform: uppercase;
     letter-spacing: 1px;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
 }
 
 .btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
 .btn-yes {
-    background-color: var(--flap-color); /* Taupe oscuro */
-    color: var(--bg-color); /* Letra clara */
+    background-color: var(--btn-yes-bg); /* NEGRO */
+    color: #fff;
+    border: 1px solid var(--btn-yes-bg);
 }
 
 .btn-no {
-    background-color: var(--accent-color); /* Dorado/Ocre */
+    background-color: transparent;
+    color: var(--btn-no-bg); /* Café texto */
+    border: 1px solid var(--btn-no-bg); /* Borde café */
+}
+
+.btn-no:hover {
+    background-color: var(--btn-no-bg);
     color: #fff;
 }
 
@@ -198,7 +209,7 @@ body {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(122, 111, 93, 0.6); /* Taupe con transparencia */
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo negro semitransparente */
     justify-content: center;
     align-items: center;
     opacity: 0;
@@ -211,25 +222,25 @@ body {
 }
 
 .modal-content {
-    background-color: var(--bg-color); /* Fondo crema */
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    background-color: var(--bg-color); /* Beige */
+    padding: 50px;
+    border-radius: 4px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
     text-align: center;
     max-width: 80%;
     position: relative;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     color: var(--text-color);
-    border: 2px solid var(--flap-color); /* Borde elegante */
+    border: 4px double var(--envelope-color); /* Marco doble estilo cuadro */
     animation: slideDown 0.3s ease-out;
 }
 
 .close-btn {
     position: absolute;
     top: 10px;
-    right: 15px;
-    font-size: 28px;
-    color: var(--flap-color);
+    right: 20px;
+    font-size: 30px;
+    color: var(--text-color);
     cursor: pointer;
     transition: color 0.2s;
 }
